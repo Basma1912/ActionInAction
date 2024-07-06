@@ -1,17 +1,14 @@
 name: My First Workflow
-
 on:
   push:
     branches:
       - main
-
+      
   workflow_dispatch:
-
 jobs:
-	MyFirstJob:
- 		runs-on: ubuntu-latest
-
-	 steps:
-			- run: echo ":wave Hello World!"
+  MyFirstJob:
+     runs-on: ubuntu-latest
+     steps:
+       - run: echo ":wave Hello World!"
  
  
