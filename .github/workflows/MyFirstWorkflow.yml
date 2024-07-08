@@ -32,9 +32,12 @@ jobs:
          run: |
           mv the_file.yaml textx.yaml
           echo "whatever"
-          git add textx.yaml
-          git commit -m "this is a commit"
-          gh pr create --title "The fix" --body "This fixes the issue" --head "try01" --base "main" --repo "basma1912/ActionInAction"
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git add .
+          git commit -m "New post"
+          git push -u origin try001
+          gh pr create -B main -H try001 --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
          env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          
