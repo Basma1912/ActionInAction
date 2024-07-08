@@ -33,6 +33,9 @@ jobs:
           mv the_file.yaml testx.yaml
           cp testx.yaml /tmp/
           echo "whatever the first time"
+          tree
+          pwd
+          cat /tmp/testx.yaml
           #git config user.name "GitHub Actions Bot"
           #git config user.email "<>"
           #git checkout -b try001
