@@ -1,4 +1,10 @@
 name: My First Workflow
+
+env:
+  APP: test
+  APPLICATION_REPOSITORY: basma1912/testActions
+
+
 on:
   push:
     branches:
@@ -13,10 +19,13 @@ jobs:
 
        - name: Checkout
          uses: actions/checkout@v4.1.7
+         with: 
+          repository: ${{ env.APPLICATION_REPOSITORY }}
 
        - name: List files in respository
          run: |
           echo "The repository ${{ github.repository }} contains the following files: "
           tree 
+      
  
  
