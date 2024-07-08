@@ -2,7 +2,7 @@ name: My First Workflow
 
 env:
   APP: test
-  APPLICATION_REPOSITORY: basma1912/ActionInAction
+  APPLICATION_REPOSITORY: basma1912/testA
 
 
 on:
@@ -30,17 +30,43 @@ jobs:
 
        - name: copy file from repo x to repo y
          run: |
-          mv the_file.yaml textx.yaml
-          echo "whatever"
+          mv the_file.yaml testx.yaml
+          cp testx.yaml /tmp/
+          echo "whatever the first time"
+          #git config user.name "GitHub Actions Bot"
+          #git config user.email "<>"
+          #git checkout -b try001
+          #git add .
+          #git commit -m "New post"
+          #git push -u origin try001
+          #gh pr create -B main -H try001 --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action' 
+         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  MySecondJob:
+     permissions: write-all
+     runs-on: ubuntu-latest
+     steps:
+       - name : checkout infra repo
+         uses: actions/checkout@v4.1.7
+         with:
+          repository : basma1912/TestAction
+       - name: doing the work 
+         run: |
+          echo "whatever the second time "
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git checkout -b try001
-          git add .
+          git add /tmp/testx.yaml
           git commit -m "New post"
           git push -u origin try001
-          gh pr create -B main -H try001 --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+          gh pr create -B main -H try001 --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action' 
          env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+          
+         
+     
          
  
  
