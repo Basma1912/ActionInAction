@@ -50,7 +50,7 @@ jobs:
        - name : checkout infra repo
          uses: actions/checkout@v4.1.7
          with:
-          repository : basma1912/TestAction
+          repository : basma1912/testActions
        - name: doing the work 
          run: |
           echo "whatever the second time "
