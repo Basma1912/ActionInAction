@@ -24,12 +24,12 @@ jobs:
 
        - name: List files in respository
          run: |
-          echo "The repository ${{ github.repository }} contains the following files: "
+          echo "The repository ${{ env.APPLICATION_REPOSITORY }} contains the following files: "
           tree 
 
        - name: copy file from repo x to repo y
          run: |
-          # mv the_file.yaml textx.yaml
+          mv the_file.yaml textx.yaml
           echo "whatever"
          
  
