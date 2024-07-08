@@ -13,6 +13,8 @@ on:
   workflow_dispatch:
 jobs:
   MyFirstJob:
+     permissions:
+       issues: write-all
      runs-on: ubuntu-latest
      steps:
        - run: echo "👋 Hello World! ✌️ "
@@ -31,6 +33,10 @@ jobs:
          run: |
           mv the_file.yaml textx.yaml
           echo "whatever"
+          run: gh pr create --title "The fix" --body "This fixes the issue"
+         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.html_url }}
          
  
  
