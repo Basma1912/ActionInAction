@@ -32,6 +32,8 @@ jobs:
          run: |
           mv the_file.yaml textx.yaml
           echo "whatever"
+          git add textx.yaml
+          git commit -m "this is a commit"
           gh pr create --title "The fix" --body "This fixes the issue" --head "try01" --base "main" --repo "basma1912/ActionInAction"
          env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
