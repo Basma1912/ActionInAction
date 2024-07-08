@@ -49,6 +49,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           gh api -H 'Accept: application/vnd.github.v3.raw' "repos/basma1912/testA/contents/the_file.yaml" > ./LOCAL-FILE
+          cat ./LOCAL-FILE
           git checkout -b try001
           git add .
           git commit -m "New post"
