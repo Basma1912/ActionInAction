@@ -2,7 +2,7 @@ name: My First Workflow
 
 env:
   APP: test
-  APPLICATION_REPOSITORY: basma1912/testA
+  APPLICATION_REPOSITORY: basma1912/ActionInAction
 
 
 on:
