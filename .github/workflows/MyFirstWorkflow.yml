@@ -32,7 +32,7 @@ jobs:
          run: |
           mv the_file.yaml textx.yaml
           echo "whatever"
-          gh pr create --title "The fix" --body "This fixes the issue"
+          gh pr create --title "The fix" --body "This fixes the issue" --head "try01"
          env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.html_url }}
