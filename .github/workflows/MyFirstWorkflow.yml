@@ -13,8 +13,7 @@ on:
   workflow_dispatch:
 jobs:
   MyFirstJob:
-     permissions:
-       issues: write-all
+     permissions: write-all
      runs-on: ubuntu-latest
      steps:
        - run: echo "👋 Hello World! ✌️ "
