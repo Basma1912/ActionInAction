@@ -13,8 +13,7 @@ on:
   workflow_dispatch:
 jobs:
   MyFirstJob:
-     permissions: 
-       pull-requests: write
+     permissions: write-all
      runs-on: ubuntu-latest
      steps:
        - run: echo "👋 Hello World! ✌️ "
@@ -36,7 +35,6 @@ jobs:
           gh pr create --title "The fix" --body "This fixes the issue" --head "try01" --base "main" --repo "basma1912/testA"
          env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE: ${{ github.event.issue.html_url }}
          
  
  
