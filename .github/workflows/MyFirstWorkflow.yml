@@ -29,7 +29,8 @@ jobs:
 
        - name: copy file from repo x to repo y
          run: |
-          mv the_file.yaml textx.yaml
+          # mv the_file.yaml textx.yaml
+          echo "whatever"
          
  
  
