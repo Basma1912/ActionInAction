@@ -25,4 +25,5 @@ jobs:
 
           git commit --allow-empty -m "empty_commit"
           git push origin $BRANCH_NAME
-          #gh pr create --body "" --title "chore: update scripts to $LATEST_TAG" --head "$BRANCH_NAME" --base "main
+          #gh pr create -B main -H branch01 --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action' --repo github.com/basma1912/testActions
+          gh pr create --body 'Created by Github action' --title "chore: update scripts to $LATEST_TAG" --head $BRANCH_NAME --base main
