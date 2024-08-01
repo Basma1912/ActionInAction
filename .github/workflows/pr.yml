@@ -18,6 +18,8 @@ jobs:
         run: |
           LATEST_TAG=$(git describe --tags --always --abbrev=0)
           BRANCH_NAME="update-certs-file-$LATEST_TAG"
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
 
           git checkout -b $BRANCH_NAME
 
