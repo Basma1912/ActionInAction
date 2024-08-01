@@ -1,0 +1,25 @@
+---
+name: pr
+on:
+  workflow_dispatch:
+
+jobs:
+  send-pull-requests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+        with:
+          fetch-depth: 0
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+
+      - name: Send pull-request
+        run: |
+          LATEST_TAG=$(git describe --tags --always --abbrev=0)
+          BRANCH_NAME="update-certs-file-$LATEST_TAG"
+
+          git checkout -b $BRANCH_NAME
+
+          git commit --allow-empty -m "empty_commit"
+          git push origin $BRANCH_NAME
