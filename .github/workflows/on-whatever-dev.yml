@@ -11,7 +11,7 @@ on:
           default: refs/heads/dev
 
 jobs:
-  MyFirstJob:
+  My9thJob:
      permissions: write-all
      runs-on: ubuntu-latest
      steps:
@@ -19,7 +19,7 @@ jobs:
            echo WORKFLOW_REF=${GITHUB_REF} >> ${GITHUB_OUTPUT}
        - run: echo "👋 Hello World! ✌️ "
        - run: |-
-           echo ${GITHUB_OUTPUT.WORKFLOW_REF}
+           echo ${GITHUB_OUTPUT}
        - id: checkout_application_repo
          name: checkout application repo
          uses: actions/checkout@v4
