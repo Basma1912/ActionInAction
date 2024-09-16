@@ -22,4 +22,4 @@ jobs:
          with:
            fetch-depth: 0
            fetch-tags: true
-           ref: $GITHUB_REF
+           ref: ${GITHUB_REF}
