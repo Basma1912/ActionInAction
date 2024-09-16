@@ -9,6 +9,10 @@ on:
           type: string
           required: true
           default: refs/heads/dev
+env:
+  REF_ID: "$GITHUB_REF"
+
+
 
 jobs:
   My9thJob:
@@ -16,7 +20,7 @@ jobs:
      runs-on: ubuntu-latest
      steps:
        - run : |-
-           echo WORKFLOW_REF=${GITHUB_REF} >> ${GITHUB_OUTPUT}
+           echo WORKFLOW_REF="$GITHUB_REF" >> $"GITHUB_OUTPUT"
        - run: echo "👋 Hello World! ✌️ "
        - run: |-
            echo $GITHUB_OUTPUT
@@ -26,4 +30,4 @@ jobs:
          with:
            fetch-depth: 0
            fetch-tags: true
-           ref: ${{GITHUB_REF}}
+           ref: "$GITHUB_REF"
