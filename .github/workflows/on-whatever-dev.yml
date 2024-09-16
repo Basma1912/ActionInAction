@@ -18,6 +18,8 @@ jobs:
        - run : |-
            echo WORKFLOW_REF=${GITHUB_REF} >> ${GITHUB_OUTPUT}
        - run: echo "👋 Hello World! ✌️ "
+       - run: |-
+           echo ${GITHUB_OUTPUT}
        - id: checkout_application_repo
          name: checkout application repo
          uses: actions/checkout@v4
