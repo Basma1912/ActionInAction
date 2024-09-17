@@ -17,6 +17,7 @@ on:
         default: refs/heads/dev
 env:
   REF_ID: ${{ github.ref }}
+  name: ${{GITHUB.REF_NAME}}
 
 
 
@@ -29,7 +30,7 @@ jobs:
         deployment_env: ${{ env.DEPLOYMENT_ENV }}
         deployment_realm: ${{ env.DEPLOYMENT_REALM }}
         image_tag: ${{ env.TAG }}
-        name: ${{GITHUB_REF_NAME}}
+        name: ${{GITHUB.REF_NAME}}
    steps:
      - id: checkout_application_repo
        name: checkout application repo
