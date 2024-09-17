@@ -61,3 +61,6 @@ jobs:
           # Version tags are deployed to prod.
           echo DEPLOYMENT_ENV=prod >> "$GITHUB_ENV"
           echo DEPLOYMENT_REALM=prod >> "$GITHUB_ENV"
+     - id: print_them_out
+       run: |
+         echo $GITHUB_OUTPUT
