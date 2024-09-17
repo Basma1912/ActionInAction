@@ -1,0 +1,39 @@
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'ref to be deployed (e.g. "refs/heads/main", "v1.0.0", "2c0472cf")'
+        type: string
+        required: true
+        default: refs/heads/dev
+env:
+REF_ID: ${{ github.ref }}
+
+
+
+jobs:
+  My9thJob:
+   permissions: write-all
+   runs-on: ubuntu-latest
+   steps:
+     - run : |-
+         echo WORKFLOW_REF="$GITHUB_REF" >> $"GITHUB_OUTPUT"
+     - run: echo "👋 Hello World! ✌️ "
+     - run: |-
+         echo $GITHUB_OUTPUT
+     - run: |-
+         printf '{"commit":"%s","version":"%s","source":"%s","build":"%s"}\n' \
+         "$GITHUB_SHA" \
+         "$GITHUB_REF" \
+         "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" \
+         "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+     - id: checkout_application_repo
+       name: checkout application repo
+       uses: actions/checkout@v4
+       with:
+         fetch-depth: 0
+         fetch-tags: true
+         ref: ${{ env.REF_ID }}
