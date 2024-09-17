@@ -36,4 +36,4 @@ jobs:
          with:
            fetch-depth: 0
            fetch-tags: true
-           ref: env.REF_ID
+           ref: ${{ env.REF_ID }}
