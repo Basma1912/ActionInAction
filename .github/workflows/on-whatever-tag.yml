@@ -10,7 +10,7 @@ on:
         required: true
         default: refs/heads/dev
 env:
-REF_ID: ${{ github.ref }}
+  REF_ID: ${{ github.ref }}
 
 
 
