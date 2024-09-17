@@ -24,6 +24,11 @@ jobs:
   My11thJob:
    permissions: write-all
    runs-on: ubuntu-latest
+
+   outputs:
+        deployment_env: ${{ env.DEPLOYMENT_ENV }}
+        deployment_realm: ${{ env.DEPLOYMENT_REALM }}
+        image_tag: ${{ env.TAG }}
    steps:
      - id: dev_image_tag
        name: Set Docker Stag image tag for updates of the DEV branch
