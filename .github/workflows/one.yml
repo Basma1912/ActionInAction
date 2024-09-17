@@ -30,6 +30,13 @@ jobs:
         deployment_realm: ${{ env.DEPLOYMENT_REALM }}
         image_tag: ${{ env.TAG }}
    steps:
+     - id: checkout_application_repo
+       name: checkout application repo
+       uses: actions/checkout@v4
+       with:
+        fetch-depth: 0
+        fetch-tags: true
+        ref: ${{ env.REF_ID }}
      - id: dev_image_tag
        name: Set Docker Stag image tag for updates of the DEV branch
        if: github.ref == 'refs/heads/dev'
