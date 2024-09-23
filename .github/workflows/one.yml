@@ -30,10 +30,17 @@ jobs:
         deployment_realm: ${{ env.DEPLOYMENT_REALM }}
         image_tag: ${{ env.TAG }}
    steps:
-     - id: dev_image_tag
-       name: Set Docker Stag image tag for updates of the DEV branch
-       if: github.ref == 'refs/heads/dev'
-       run: |
+      - id: checkout_application_repo
+        name: checkout application repo
+        uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
+            fetch-tags: true
+            ref: ${{ env.REF_ID }}
+      - id: dev_image_tag
+        name: Set Docker Stag image tag for updates of the DEV branch
+        if: github.ref == 'refs/heads/dev'
+        run: |
 
           echo TAG ="dev-$(git describe --tags --abbrev=7)" >> "$GITHUB_ENV"
 
@@ -41,10 +48,10 @@ jobs:
           echo DEPLOYMENT_ENV=dev >> "$GITHUB_ENV"
           echo DEPLOYMENT_REALM=nonprod >> "$GITHUB_ENV"
 
-     - id: stage_image_tag
-       name: Set Docker Stag image tag for updates of the main branch
-       if: github.ref == 'refs/heads/main'
-       run: |
+      - id: stage_image_tag
+        name: Set Docker Stag image tag for updates of the main branch
+        if: github.ref == 'refs/heads/main'
+        run: |
 
           echo TAG ="$(git describe --tags --abbrev=7)" >> "$GITHUB_ENV"
 
@@ -52,15 +59,15 @@ jobs:
           echo DEPLOYMENT_ENV=stage >> "$GITHUB_ENV"
           echo DEPLOYMENT_REALM=nonprod >> "$GITHUB_ENV"
 
-     - id: prod_image_tag
-       name: Set Docker image tag to the git tag for tagged builds
-       if: startsWith(github.ref, 'refs/tags/')
-       run: |
+      - id: prod_image_tag
+        name: Set Docker image tag to the git tag for tagged builds
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
 
           echo TAG ="$(git describe --tags --abbrev=7)" >> "$GITHUB_ENV"
           # Version tags are deployed to prod.
           echo DEPLOYMENT_ENV=prod >> "$GITHUB_ENV"
           echo DEPLOYMENT_REALM=prod >> "$GITHUB_ENV"
-     - id: print_them_out
-       run: |
+      - id: print_them_out
+        run: |
          echo $GITHUB_OUTPUT
