@@ -71,3 +71,8 @@ jobs:
       - id: print_them_out
         run: |
          echo $GITHUB_OUTPUT
+      - uses: docker/setup-buildx-action@v3
+
+      - id: print_them_out_no
+        run: |
+         echo $GITHUB_OUTPUT
